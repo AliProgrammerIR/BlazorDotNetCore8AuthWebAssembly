@@ -1,0 +1,17 @@
+﻿@page "/logout"
+@using Client.Auth;
+@inject ILoginService loginService
+@inject NavigationManager navigationManager
+@inject Client.Repositories.IAccountRepository _iAccountRepository
+
+<text>logging out ...</text>
+
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        await loginService.LogOut();
+        await _iAccountRepository.LogoutTotal();
+        navigationManager.NavigateTo("/", true);
+    }
+}

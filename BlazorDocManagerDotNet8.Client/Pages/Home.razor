@@ -1,0 +1,30 @@
+﻿@page "/"
+@page "/index"
+
+@using Microsoft.AspNetCore.Components.Authorization;
+@using System.Security.Claims
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IJSRuntime _IJSRuntime
+
+
+<PageTitle>Home</PageTitle>
+
+<h1 class="BBaran">خوش آمدید!</h1>
+
+<CascadingAuthenticationState>
+    <AuthorizeView>
+        <Authorized>
+            <h4 class="FontMan11">نام کاربر: @context.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName).Value </h4>
+            <p class="FontMan11">ورود موفقیت آمیز.</p>
+        </Authorized>
+        <Authorizing>
+            <h4 class="FontMan11">در حال ورود به سیستم . . .</h4>
+            <p class="FontMan11">لطفا صبور باشید . . . </p>
+        </Authorizing>
+        <NotAuthorized>
+            <h4 class="FontMan11">ورود به سیستم انجام نشده است.</h4>
+            <p class="FontMan11">لطفا برای استفاده از محیط کاربری وارد سیستم شوید . . .</p>
+        </NotAuthorized>
+    </AuthorizeView>
+</CascadingAuthenticationState>

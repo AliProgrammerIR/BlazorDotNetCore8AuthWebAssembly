@@ -1,0 +1,6 @@
+@BlazorDocManagerDotNet8.Server_HostAddress = http://localhost:5276
+
+GET {{BlazorDocManagerDotNet8.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
